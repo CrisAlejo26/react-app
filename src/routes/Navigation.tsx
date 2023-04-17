@@ -1,6 +1,6 @@
 import { BrowserRouter, NavLink, Routes, Route, Navigate } from "react-router-dom"
-import logo from "../assets/react.svg"
-import { LazyPage1, LazyPage2, LazyPage3 } from "../01-lazyload/pages"
+import logo from "/src/react.svg"
+import { ShoppingPage } from "../02-component-patterns/pages/ShoppingPage"
 
 export const Navigation = () => {
     return (
@@ -10,21 +10,21 @@ export const Navigation = () => {
                     <img src={logo} width={200} height={200} alt="React Logo" />
                     <ul>
                     <li>
-                        <NavLink to="/lazy1" className={({isActive}) => isActive ? 'nav-active' : ''}>Lazy 1</NavLink>
+                        <NavLink to="/" className={({isActive}) => isActive ? 'nav-active' : ''}>Shopping</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/lazy2" className={({isActive}) => isActive ? 'nav-active' : ''}>Lazy 2</NavLink>
+                        <NavLink to="/about" className={({isActive}) => isActive ? 'nav-active' : ''}>About</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/lazy3" className={({isActive}) => isActive ? 'nav-active' : ''}>Lazy 3</NavLink>
+                        <NavLink to="/users" className={({isActive}) => isActive ? 'nav-active' : ''}>Users</NavLink>
                     </li>
                 </ul>
                 </nav>
                 <Routes>
-                    <Route path="lazy1" element = {<LazyPage1/>}/>
-                    <Route path="lazy2" element = {<LazyPage2/>}/>
-                    <Route path="lazy3" element = {<LazyPage3/>}/>
-                    <Route path="/*" element = {<Navigate to="/lazy1" replace/>}/>
+                    <Route path="/about" element={<h1>About</h1>}/>
+                    <Route path="/users" element={<h1>Users</h1>}/>
+                    <Route path="/" element={<ShoppingPage/>}/>
+                    <Route path="/*" element = {<Navigate to="/" replace/>}/>
                 </Routes>
             </div>
         </BrowserRouter>
